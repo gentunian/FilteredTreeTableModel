@@ -17,8 +17,6 @@ import org.jdesktop.swingx.treetable.DefaultTreeTableModel;
 
 
 public class Main {
-
-    private static String text;
     
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable(){
@@ -43,7 +41,7 @@ public class Main {
                         treeTable.expandAll();
                     }
                 });
-                JTextField filterText = new JTextField();
+                final JTextField filterText = new JTextField();
                 filterText.addCaretListener(new CaretListener(){
                     @Override
                     public void caretUpdate(CaretEvent e) {
@@ -52,7 +50,7 @@ public class Main {
                             treeTable.setModelFilter(new TellapicModelFilter(treeTable){
                                 @Override
                                 public boolean shouldBeFiltered(AbstractMutableTreeTableNode node) {
-                                    return node.getUserObject().toString().toLowerCase().startsWith(text.toLowerCase());
+                                    return node.getUserObject().toString().toLowerCase().startsWith(filterText.getText().toLowerCase());
                                 }
                             });
                         } else {
