@@ -45,8 +45,7 @@ public class Main {
                 filterText.addCaretListener(new CaretListener(){
                     @Override
                     public void caretUpdate(CaretEvent e) {
-                        text = ((JTextField) e.getSource()).getText();
-                        if (text.length() > 0) {
+                        if (filterText.getText().length() > 0) {
                             treeTable.setModelFilter(new TellapicModelFilter(treeTable){
                                 @Override
                                 public boolean shouldBeFiltered(AbstractMutableTreeTableNode node) {
